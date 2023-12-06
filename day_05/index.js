@@ -29,6 +29,10 @@ for (const line of lines) {
         continue
     }
 
+    if (line === '') {
+        isInMap = false
+    }
+
     if (isInMap) {
         const [to, from, range] = line.split(' ').map((v) => parseInt(v))
 
@@ -36,11 +40,9 @@ for (const line of lines) {
         mappers.at(currentMapIndex).toValues.push(to)
         mappers.at(currentMapIndex).rangeValues.push(range)
     }
-
-    if (line === '') {
-        isInMap = false
-    }
 }
+
+console.log(mappers)
 
 for (const seed of seeds) {
     let currentValue = seed
